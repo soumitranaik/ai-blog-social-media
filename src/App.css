@@ -1,6 +1,20 @@
 .App {
-  text-align: center;
+ /*padding: 4rem;*/
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +49,153 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+  margin: 0;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;*/
+}
+.container {
+  /*display: flex;
+  flex-direction: column;
+  align-items: center;*/
+  position: relative;
+  margin-bottom: 40px;
+}
+.image-wrapper, .image-wrapper2, .image-wrapper3{
+  
+  /*background: url("https://images.pexels.com/photos/3687770/pexels-photo-3687770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");*/
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  background-size: cover !important;
+}
+
+.inner-image-wrapper{
+  outline: 4px solid white;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin: 30px;
+  bottom: 0;
+}
+.image-text{
+  
+  font-size: 44px;
+  background-color: #ffffffd9;
+    padding: 30px;
+    border-radius: 30px;
+    max-width: 394px;
+   /* box-shadow: 3px 4px 10px 3px #ffffff9e;*/
+    text-transform: uppercase;
+    background-position: center !important;
+}
+.image{
+  width: 400px;
+}
+.text-box{
+   /* position: relative;
+    left: 35px;
+    top: 287px;
+    text-align: left;
+    border-radius: 25px;*/
+    position: absolute;
+  bottom: 20px; /* Adjust the value to set the fixed space from the bottom */
+  left: 20px; /* Adjust the value to set the fixed space from the left */
+  right: 20px; /* Adjust the value to set the fixed space from the right */
+}
+
+.image-text2{
+  position: relative;
+  font-size: 44px;
+    padding: 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    right: 0;
+    left: 0;
+    
+}
+
+.text-box2{
+  position: absolute;
+  bottom: 0; 
+  left: 0; 
+ 
+  text-align: center;
+ 
+}
+.image-wrapper2{
+  border: 25px solid;
+  border-image-slice: 1;
+  border-width: 25px;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+}
+
+.image-wrapper3{
+  background: url(/src/images/aqua.png);
+  /*background: -webkit-linear-gradient(45deg, #1e5799 0%,#23bca5 14%,#2989d8 26%,#23bca5 49%,#207cca 72%,#23bca5 88%,#7db9e8 100%);*/
+}
+
+.text-box3{
+  position: absolute;
+ 
+  text-align: right;
+}
+
+.boximg{
+  position: relative;
+  box-shadow: 0px 0px 30px #000000bf;
+    top: 233px;
+    right: 50px;
+    
+}
+
+.image-text3{
+  position: relative;
+  /*font-size: 58px !important;*/
+    padding: 30px 60px;
+    font-family: 'Dancing Script', cursive !important;
+    /*text-transform: uppercase;*/
+    right: 0;
+    top: 30px;
+    left: 0;
+}
+
+.logo3{
+  width: 200px;
+ 
+}
+
+.savepng{
+  position: relative;
+}
+
+.footer {
+  flex-shrink: 0; 
+  /*position: absolute;*/
+  bottom: 0;
+  width: 100%;
+  padding-top: 40px;
+  background-color: #f5f5f5; 
+  text-align: center; 
+  /*display: flex;*/
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px -5px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.footerlinks li{
+  list-style-type: none;
+}
+
+.footerlinks ul{
+  padding-left: 0;
 }
