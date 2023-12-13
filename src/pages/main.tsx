@@ -20,7 +20,7 @@ export const Main = () => {
   
   if (!user) {
     return (
-      <Box paddingTop={6}>
+      <Box paddingTop={6} sx={{ minHeight: "80vh" }}>
         <Login />
 
       </Box>
@@ -30,22 +30,35 @@ export const Main = () => {
 
  
   return (
-    <Box paddingTop={6} sx={{minHeight:'100vh'}}>
-      
-      <Stack spacing={4} sx={{alignItems:'center'}}>
+    <Box paddingX={4} paddingY={12} sx={{ minHeight: "100vh" }}>
+      <Stack spacing={4} sx={{ alignItems: "center" }}>
+        {/*
       {user?.photoURL &&  <img src={user?.photoURL} />}
-        <Typography variant='h2'>Welcome {user?.displayName}</Typography>
-      
-        <Stack spacing={4} direction='row' sx={{alignItems:'center'}}>
-          <TextField label='Enter a topic' color='warning' helperText='For example: Web design services' value={input} onChange={(e) => setInput(e.target.value)}/>
-          <Button variant='contained' color='warning' onClick={handleSend}>Suggest Idea </Button>
+
+  */}
+        <Typography variant="h3" textAlign="center">
+          Welcome {user?.displayName}
+        </Typography>
+
+        <Stack
+          spacing={4}
+          direction={{ xs: "column", sm: "row" }}
+          sx={{ alignItems: "center" }}
+        >
+          <TextField
+            label="Enter a topic"
+            color="warning"
+            helperText="For example: Web design services"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <Button variant="contained" color="warning" onClick={handleSend}>
+            Suggest Idea{" "}
+          </Button>
         </Stack>
       </Stack>
-        {ideaResponse && <ImageSearch query={ideaResponse}/>}
-
-      
+      {ideaResponse && <ImageSearch query={ideaResponse} />}
     </Box>
-    
-  )
+  );
 }
 

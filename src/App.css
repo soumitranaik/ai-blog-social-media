@@ -91,7 +91,7 @@ body{
   
   font-size: 44px;
   background-color: #ffffffd9;
-    padding: 30px;
+    padding: 20px;
     border-radius: 30px;
     max-width: 394px;
    /* box-shadow: 3px 4px 10px 3px #ffffff9e;*/
@@ -161,7 +161,7 @@ body{
 .image-text3{
   position: relative;
   /*font-size: 58px !important;*/
-    padding: 30px 60px;
+    padding: 20px 40px;
     font-family: 'Dancing Script', cursive !important;
     /*text-transform: uppercase;*/
     right: 0;

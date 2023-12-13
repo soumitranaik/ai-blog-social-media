@@ -16,7 +16,7 @@ export const Login = () => {
   return (
     <Box p={8}>
       <Stack spacing={2} sx={{alignItems: 'center'}} >
-        <Typography variant='h3'>Sign in with google</Typography>
+        <Typography variant='h3' textAlign='center' paddingBottom={4}>Sign in with google</Typography>
         <Button variant='contained' color='primary' startIcon={<GoogleIcon />} onClick={signinWithGoogle}>Sign In</Button>
       </Stack>
     </Box>

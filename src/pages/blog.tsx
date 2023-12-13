@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../config/firebase';
 import { useParams } from 'react-router-dom';
-import { Box, Stack, Paper, Container, Typography } from '@mui/material';
+import { Box, Stack, Paper, Container, Typography, Backdrop, CircularProgress } from '@mui/material';
 
 export const Blog = () => {
   const { blogurl } = useParams();
@@ -104,7 +104,9 @@ export const Blog = () => {
           </Container>
         </div>
       ) : (
-        <p>Loading...</p>
+        <Stack direction="column" alignItems='center' color='secondary' height='80vh' justifyContent='center'><CircularProgress color="inherit" /></Stack>
+        
+    
       )}
     </>
   );

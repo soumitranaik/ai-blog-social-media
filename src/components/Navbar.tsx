@@ -24,12 +24,15 @@ const Navbar = () => {
         </Typography>
         <Stack direction="row" spacing={2}>
           <Button component='a' href='/' color="inherit" >Home</Button>
+          <Button component='a' href='/blog' color="inherit" >Blogs</Button>
           {user ? (
+            
             <div>
               <Button color="inherit" onClick={signUserOut}>
                 Logout
               </Button>
             </div>
+            
           ) : (
             <Button color="inherit" component={Link} to="/login">
               Login

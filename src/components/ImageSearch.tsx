@@ -244,7 +244,17 @@ const ImageSearch = (props: imgquery) => {
     <Stack spacing={2} sx={{ alignItems: "center", margin: "40px 0" }}>
       {photo && template === 1 && (
         <div className="container">
-          <div ref={divRef} style={{ width: "460px", height: "460px" }}>
+          <Box
+            ref={divRef}
+            width={{
+              xs: 300,
+              sm: 450,
+            }}
+            height={{
+              xs: 300,
+              sm: 450,
+            }}
+          >
             <div
               className="image-wrapper"
               style={{
@@ -256,12 +266,13 @@ const ImageSearch = (props: imgquery) => {
                   variant="h5"
                   className="image-text"
                   sx={{ backgroundColor: t1boxColor }}
+                  fontSize={{ xs: 15, sm: 24 }}
                 >
                   {query}
                 </Typography>
               </div>
             </div>
-          </div>
+          </Box>
           {/*<Stack sx={{ alignItems: "center" }}>
             <LoadingButton
               variant="contained"
@@ -280,35 +291,62 @@ const ImageSearch = (props: imgquery) => {
       )}
       {photo && template === 2 && (
         <div className="container">
-          <div ref={divRef} style={{ width: "460px", height: "460px" }}>
-            <div
+          <Box
+            ref={divRef}
+            width={{
+              xs: 300,
+              sm: 450,
+            }}
+            height={{
+              xs: 300,
+              sm: 450,
+            }}
+          >
+            <Box
               className="image-wrapper2"
-              style={{
+              sx={{
                 background: isDarkGradient
-                  ? `linear-gradient(0deg, rgb(0 0 0 / 83%) 29%, rgb(0 0 0 / 43%) 50%, rgb(0 0 0 / 35%) 88%), url(${photo[0].src.large})`
-                  : `linear-gradient(0deg, rgb(255 255 255 / 83%) 29%, rgb(201 193 193 / 43%) 50%, rgb(0 0 0 / 35%) 88%), url(${photo[0].src.large})`,
-                border: "24px inset rgb(113 0 112 / 65%)",
-                width: "413px",
-                height: "415px",
+                  ? `linear-gradient(0deg, rgb(0 0 0 / 83%) 29%, rgb(0 0 0 / 74%) 50%, rgb(0 0 0 / 39%) 95%), url(${photo[0].src.large})`
+                  : `linear-gradient(0deg, rgb(255 255 255 / 83%) 29%, rgb(201 193 193 / 74%) 50%, rgb(0 0 0 / 39%) 95%), url(${photo[0].src.large})`,
+                border: "20px inset rgb(113 0 112 / 65%)",
+                width: {
+                  xs: 257,
+                  sm: 415,
+                },
+                height: {
+                  xs: 257,
+                  sm: 415,
+                },
               }}
             >
               <div className="text-box2">
                 <Typography
                   variant="h5"
                   className="image-text2"
-                  sx={{ color: isDarkGradient ? "#ffffff" : "#000000" }}
+                  sx={{
+                    color: isDarkGradient ? "#ffffff" : "#000000",
+                  }}
+                  fontSize={{ xs: 18, sm: 24 }}
                 >
                   {query}
                 </Typography>
               </div>
-            </div>
-          </div>
+            </Box>
+          </Box>
         </div>
       )}
 
       {photo && template === 3 && (
         <Box>
-          <div ref={divRef} style={{ width: "460px", height: "460px" }}>
+          <Box ref={divRef} 
+           width={{
+            xs: 300,
+            sm: 450,
+          }}
+          height={{
+            xs: 300,
+            sm: 450,
+          }}>
             <div className="image-wrapper3">
               <div className="text-box3">
                 <Typography
@@ -318,6 +356,7 @@ const ImageSearch = (props: imgquery) => {
                     textAlign: "right",
                     color: "#fff",
                   }}
+                  fontSize={{ xs: 22, sm: 28 }}
                 >
                   {query}
                 </Typography>
@@ -332,12 +371,12 @@ const ImageSearch = (props: imgquery) => {
                   style={{
                     width: `${imgwidth}px`,
                     height: "auto",
-                    margin: "43px 48px",
+                    margin: "35px 35px",
                   }}
                 />
               </Stack>
             </div>
-          </div>
+          </Box>
         </Box>
       )}
 
@@ -410,8 +449,8 @@ const ImageSearch = (props: imgquery) => {
                   color="warning"
                   value={imgwidth}
                   onChange={handleSliderChange}
-                  min={200}
-                  max={365}
+                  min={100}
+                  max={233}
                   step={1}
                   valueLabelDisplay="auto"
                   valueLabelFormat={(value) => `${value}px`}
@@ -441,15 +480,15 @@ const ImageSearch = (props: imgquery) => {
         <Stack>
           <Button
             variant="contained"
-            color="secondary"
+            color="warning"
             onClick={() => setOpendialog(true)}
           >
-            Preview and Finalise
+            Preview 
           </Button>
           <Dialog
             open={openDialog}
             onClose={() => setOpendialog(false)}
-            sx={{ padding: "50px" }}
+            
           >
             <DialogTitle>Preview</DialogTitle>
             <DialogContent>
@@ -482,7 +521,11 @@ const ImageSearch = (props: imgquery) => {
                 <Button
                   variant="outlined"
                   color="error"
-                  onClick={() => {setOpendialog(false); setshowFinalizebutton(true); setShowpreviewbtn(false)}}
+                  onClick={() => {
+                    setOpendialog(false);
+                    setshowFinalizebutton(true);
+                    setShowpreviewbtn(false);
+                  }}
                 >
                   Cancel
                 </Button>
