@@ -25,6 +25,7 @@ import { addDoc, collection} from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Slider from "@mui/material/Slider";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 
 interface Photo {
@@ -65,7 +66,7 @@ const ImageSearch = (props: imgquery) => {
   const [showpreviewbtn, setShowpreviewbtn] = useState(false);
   const [pageurl, setPageUrl] = useState("");
   const [templatesbutton, setTemplatesbutton] = useState <string | null>(null);
-  const [imgwidth, setImgwidth] = useState(300);
+  const [imgwidth, setImgwidth] = useState(200);
   const [bannerimgUrl, setBannerimgUrl] = useState("")
 
   const postsRef = collection(db, "pagecontent");
@@ -364,14 +365,15 @@ const ImageSearch = (props: imgquery) => {
               <Stack
                 direction="row"
                 spacing={2}
-                sx={{ alignItems: "flex-end", height: "100%" }}
+                sx={{ alignItems: "flex-end", height: "100%"  }}
               >
                 <img
                   src={photo[0].src.large}
                   style={{
                     width: `${imgwidth}px`,
                     height: "auto",
-                    margin: "35px 35px",
+                    margin: "35px 10px",
+                    border: "5px solid #ffffff"
                   }}
                 />
               </Stack>
@@ -382,8 +384,8 @@ const ImageSearch = (props: imgquery) => {
 
       {/*photo && <button onClick={finalize}>Finalize image and content(saves raw image to /)</button>*/}
       <Container maxWidth="md">
-        <Typography variant="h6" textAlign="center">
-          {content}
+        <Typography variant="h6"  fontSize={{ xs: 18, sm: 28 }} textAlign="center">
+          {content} 
         </Typography>
       </Container>
       <Stack spacing={2} sx={{ alignItems: "center" }}>
@@ -450,8 +452,9 @@ const ImageSearch = (props: imgquery) => {
                   value={imgwidth}
                   onChange={handleSliderChange}
                   min={100}
-                  max={233}
-                  step={1}
+                  max={400}
+                  step={1} 
+                  defaultValue={150}
                   valueLabelDisplay="auto"
                   valueLabelFormat={(value) => `${value}px`}
                 />
@@ -480,6 +483,7 @@ const ImageSearch = (props: imgquery) => {
         <Stack>
           <Button
             variant="contained"
+            startIcon={<RemoveRedEyeIcon />}
             color="warning"
             onClick={() => setOpendialog(true)}
           >
@@ -545,7 +549,7 @@ const ImageSearch = (props: imgquery) => {
                     }
                     onClick={saveDatatoDB}
                   >
-                    Generate Blog Page
+                    Generate Blog
                   </LoadingButton>
                 ) : (
                   <Button
