@@ -60,5 +60,6 @@ export const Main = () => {
       {ideaResponse && <ImageSearch query={ideaResponse} />}
     </Box>
   );
+  console.log(process.env.REACT_APP_OPENAI_API);
 }
 

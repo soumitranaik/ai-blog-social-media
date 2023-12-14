@@ -22,7 +22,7 @@ return res.data.choices[0].text;
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.REACT_APP_OPENAI_API,
   dangerouslyAllowBrowser: true  // This is also the default, can be omitted
 });
 
