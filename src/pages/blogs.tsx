@@ -92,7 +92,7 @@ const Blogs = () => {
                         size="small"
                         color="secondary"
                         component="a"
-                        href={`/blogs/${blog.url}`}
+                        href={`https://socialblogbot.netlify.app/blogs/${blog.url}`}
                       >
                         Read More
                       </Button>

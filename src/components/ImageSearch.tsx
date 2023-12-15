@@ -514,7 +514,7 @@ const ImageSearch = (props: imgquery) => {
                   <Typography>{content}</Typography>
                   <Typography>
                     Blog Page Url:{" "}
-                    <a href={`/blogs/${pageurl}`}>
+                    <a href={`https://socialblogbot.netlify.app/blogs/${pageurl}`}>
                       {pageurl && `socialblogbot.netlify.app/blogs/${pageurl}`}
                     </a>
                   </Typography>
