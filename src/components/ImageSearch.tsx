@@ -14,7 +14,7 @@ import {
   Stack,
   ButtonGroup,
   Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, CircularProgress,
-  LinearProgress, Box, Switch, ToggleButton, ToggleButtonGroup, Container
+  LinearProgress, Box, Switch, ToggleButton, ToggleButtonGroup, Container, Grid, Tooltip
 } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import SaveIcon from '@mui/icons-material/Save';
@@ -26,6 +26,8 @@ import { db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Slider from "@mui/material/Slider";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import BrowseGalleryIcon from '@mui/icons-material/BrowseGallery';
+import { BrowseGallery } from "@mui/icons-material";
 
 
 interface Photo {
@@ -339,15 +341,17 @@ const ImageSearch = (props: imgquery) => {
 
       {photo && template === 3 && (
         <Box>
-          <Box ref={divRef} 
-           width={{
-            xs: 300,
-            sm: 450,
-          }}
-          height={{
-            xs: 300,
-            sm: 450,
-          }}>
+          <Box
+            ref={divRef}
+            width={{
+              xs: 300,
+              sm: 450,
+            }}
+            height={{
+              xs: 300,
+              sm: 450,
+            }}
+          >
             <div className="image-wrapper3">
               <div className="text-box3">
                 <Typography
@@ -365,7 +369,7 @@ const ImageSearch = (props: imgquery) => {
               <Stack
                 direction="row"
                 spacing={2}
-                sx={{ alignItems: "flex-end", height: "100%"  }}
+                sx={{ alignItems: "flex-end", height: "100%" }}
               >
                 <img
                   src={photo[0].src.large}
@@ -373,7 +377,7 @@ const ImageSearch = (props: imgquery) => {
                     width: `${imgwidth}px`,
                     height: "auto",
                     margin: "35px 10px",
-                    border: "5px solid #ffffff"
+                    border: "5px solid #ffffff",
                   }}
                 />
               </Stack>
@@ -384,8 +388,12 @@ const ImageSearch = (props: imgquery) => {
 
       {/*photo && <button onClick={finalize}>Finalize image and content(saves raw image to /)</button>*/}
       <Container maxWidth="md">
-        <Typography variant="h6"  fontSize={{ xs: 18, sm: 28 }} textAlign="center">
-          {content} 
+        <Typography
+          variant="h6"
+          fontSize={{ xs: 18, sm: 28 }}
+          textAlign="center"
+        >
+          {content}
         </Typography>
       </Container>
       <Stack spacing={2} sx={{ alignItems: "center" }}>
@@ -453,7 +461,7 @@ const ImageSearch = (props: imgquery) => {
                   onChange={handleSliderChange}
                   min={100}
                   max={400}
-                  step={1} 
+                  step={1}
                   defaultValue={150}
                   valueLabelDisplay="auto"
                   valueLabelFormat={(value) => `${value}px`}
@@ -487,17 +495,18 @@ const ImageSearch = (props: imgquery) => {
             color="warning"
             onClick={() => setOpendialog(true)}
           >
-            Preview 
+            Preview
           </Button>
-          <Dialog
-            open={openDialog}
-            onClose={() => setOpendialog(false)}
-            
-          >
+          <Dialog open={openDialog} onClose={() => setOpendialog(false)}>
             <DialogTitle>Preview</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                <Stack spacing={2} sx={{ alignItems: "center" }}>
+                <Stack
+                  spacing={2}
+                  sx={{
+                    alignItems: "center",
+                  }}
+                >
                   <Typography variant="h5">{query}</Typography>
                   {DownloadUrl && (
                     <img src={templateimg} style={{ width: "85%" }} />
@@ -505,15 +514,27 @@ const ImageSearch = (props: imgquery) => {
                   <Typography>{content}</Typography>
                   <Typography>
                     Blog Page Url:{" "}
-                    <a href={`http://localhost:3000/blogs/${pageurl}`}>
-                      http://localhost:3000/blogs/{pageurl}
+                    <a href={`/blogs/${pageurl}`}>
+                      {pageurl && `socialblogbot.netlify.app/blogs/${pageurl}`}
                     </a>
                   </Typography>
                 </Stack>
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Stack
+              <Grid
+                container
+                spacing={2}
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  flexDirection:{
+                    xs:'column',
+                    sm:'row'
+                  }
+                }}
+              >
+                {/*<Stack
                 spacing={2}
                 direction="row"
                 sx={{
@@ -521,47 +542,68 @@ const ImageSearch = (props: imgquery) => {
                   justifyContent: "flex-end",
                   padding: "30px",
                 }}
-              >
-                <Button
-                  variant="outlined"
-                  color="error"
-                  onClick={() => {
-                    setOpendialog(false);
-                    setshowFinalizebutton(true);
-                    setShowpreviewbtn(false);
-                  }}
-                >
-                  Cancel
-                </Button>
-                {showInstabtn ? (
-                  <LoadingButton
-                    variant="contained"
-                    loading={loadingSaveDB}
-                    color="secondary"
-                    startIcon={
-                      <>
-                        {loadingSavepng ? (
-                          <CircularProgress size={20} color="inherit" />
-                        ) : (
-                          <FeedIcon /> // Static icon when not loading
-                        )}
-                      </>
-                    }
-                    onClick={saveDatatoDB}
-                  >
-                    Generate Blog
-                  </LoadingButton>
-                ) : (
+              >*/}
+                <Grid item xs={12} md={6}>
+                  {showInstabtn ? (
+                    <Box>
+                    <LoadingButton
+                      variant="contained"
+                      loading={loadingSaveDB}
+                      color="secondary"
+                      startIcon={
+                        <>
+                          {loadingSavepng ? (
+                            <CircularProgress size={20} color="inherit" />
+                          ) : (
+                            <FeedIcon /> // Static icon when not loading
+                          )}
+                        </>
+                        
+                      }
+                      onClick={saveDatatoDB}
+                      sx={{m:1}}
+                    >
+                      Generate Blog
+                    </LoadingButton>
+                    <Tooltip title="feature not yet available">
+                    <Button startIcon={<BrowseGalleryIcon />} variant="contained" color="secondary" sx={{m:1}}>
+                      Schedule
+                    </Button>
+                    </Tooltip>
+                      
+                    </Box>
+                  ) : (
+                    <Grid item xs={12} md={6}>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<InstagramIcon />}
+                      onClick={posttoinstagram}
+                    >
+                      Post to Instagram
+                    </Button>
+                    <Tooltip title="feature not yet available">
+                    <Button startIcon={<BrowseGalleryIcon />} variant="contained" color="secondary" sx={{m:1}}>
+                      Schedule
+                    </Button>
+                    </Tooltip>
+                    </Grid>
+                  )}
+                </Grid>
+                <Grid item xs={12} md={2}>
                   <Button
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<InstagramIcon />}
-                    onClick={posttoinstagram}
+                    variant="outlined"
+                    color="error"
+                    onClick={() => {
+                      setOpendialog(false);
+                      setshowFinalizebutton(true);
+                      setShowpreviewbtn(false);
+                    }}
                   >
-                    Post to Instagram
+                    Cancel
                   </Button>
-                )}
-              </Stack>
+                </Grid>
+              </Grid>
             </DialogActions>
           </Dialog>
         </Stack>

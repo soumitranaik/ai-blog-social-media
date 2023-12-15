@@ -92,7 +92,7 @@ const Blogs = () => {
                         size="small"
                         color="secondary"
                         component="a"
-                        href={`http://localhost:3000/blogs/${blog.url}`}
+                        href={`/blogs/${blog.url}`}
                       >
                         Read More
                       </Button>
